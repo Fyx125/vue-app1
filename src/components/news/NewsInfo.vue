@@ -1,23 +1,27 @@
 <template>
     <div class="newsinfo-container">
-        <h3 class="title">新闻标题</h3>
+        <h3 class="title">{{newsInfo.title}}</h3>
         <p class="subtitle">
-            <span>发表时间：</span>
-            <span>点击：</span>
+            <span>发表时间：{{newsInfo.time}}</span>
+            <span>点击：{{newsInfo.num}}</span>
         </p>
+        <hr>
         <div class="content">
-
+            {{newsInfo.content}}
         </div>
+        <!--评论子组件区域-->
+        <comment-box></comment-box>
     </div>
 </template>
 
 <script>
+    import comment from '../sub/comment.vue'
     export default {
         name: "NewsInfo",
         data() {
             return {
                 id: this.$route.params.id,
-                newsInfo:[]
+                newsInfo:{}
             }
         },
         created(){
@@ -27,9 +31,11 @@
             getNewsInfo(){
                 this.$http.get("getnewsinfo/"+this.id).then(result => {
                     this.newsInfo = result.body;
-                    console.log(this.newsInfo);
                 })
             }
+        },
+        components: {
+            'comment-box': comment
         }
     }
 </script>
@@ -42,6 +48,9 @@
             text-align: center;
             margin: 15px 0;
             color: #f00;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         .subtitle {
             font-size: 13px;
