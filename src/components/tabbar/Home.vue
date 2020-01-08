@@ -12,26 +12,26 @@
                 <img :src="images[0]" alt="">
                 <div class="mui-media-body">新闻资讯</div>
             </router-link></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/photolist">
                 <img :src="images[1]" alt="">
                 <div class="mui-media-body">图片分享</div>
-            </a></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            </router-link></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/goodslist">
                 <img :src="images[2]" alt="">
                 <div class="mui-media-body">商品购买</div>
-            </a></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            </router-link></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
                 <img :src="images[0]" alt="">
                 <div class="mui-media-body">留言反馈</div>
-            </a></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            </router-link></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
                 <img :src="images[0]" alt="">
                 <div class="mui-media-body">视频专区</div>
-            </a></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            </router-link></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
                 <img :src="images[0]" alt="">
                 <div class="mui-media-body">联系我们</div>
-            </a></li>
+            </router-link></li>
         </ul>
     </div>
 </template>

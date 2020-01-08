@@ -11,14 +11,19 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
+import VuePreview from 'vue-preview'
+
 
 Vue.use(MintUI);
 Vue.use(VueRouter);
 Vue.use(VueResource);
+// 缩略图插件(图片预览)
+Vue.use(VuePreview);
 
 //设置请求的根路径
 Vue.http.options.root = 'http://localhost:8081/';
-
+//设置post时候 表单数据格式的组织形式
+Vue.http.options.emulateJSON = true;
 //定义一个全局时间过滤器
 import moment from 'moment'
 Vue.filter('dataFormat',function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
