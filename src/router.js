@@ -12,6 +12,8 @@ import NewsInfo from './components/news/NewsInfo.vue'
 import PhotoList from './components/photos/PhotoList.vue'
 import PhotoInfo from './components/photos/PhotoInfo.vue'
 import GoodsList from './components/goods/GoodsList.vue'
+import GoodsInfo from './components/goods/GoodsInfo.vue'
+import GoodsDesc from './components/goods/GoodsDesc.vue'
 
 
 export default new VueRouter({
@@ -64,6 +66,16 @@ export default new VueRouter({
             path: '/home/goodslist',
             name: 'GoodsList',
             component: GoodsList
+        },
+        {
+            path: '/home/goodsinfo/:id',
+            name: 'GoodsInfo',
+            component: GoodsInfo
+        },
+        {
+            path: '/home/goodsdesc/:id',
+            name: 'GoodsDesc',
+            component: GoodsDesc
         }
     ],
     linkActiveClass: 'mui-active'    //设置新的类名覆盖默认的类router-link-active

@@ -6,14 +6,17 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import router from './router.js'
+import store from './store.js'
 import app from './App.vue'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
 import VuePreview from 'vue-preview'
+import Vuex from 'vuex'
 
 
+Vue.use(Vuex);
 Vue.use(MintUI);
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -37,7 +40,8 @@ var vm = new Vue({
     render:function (createElements) {          //会将el选择的节点里面所有的内容覆盖
         return createElements(app);
     },
-    router
+    router,
+    store
 });
 
 

@@ -7,7 +7,7 @@
                 <div class="mui-scroll">
                     <a :class="['mui-control-item', item.id == 0 ? 'mui-active': '']" v-for="item in cates"
                        :key="item.id"
-                       @click="getPhotoByCateId(item.id)">{{item.title}}</a>
+                       @tap="getPhotoByCateId(item.id)">{{item.title}}</a>
                 </div>
             </div>
         </div>

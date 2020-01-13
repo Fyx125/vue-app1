@@ -1,11 +1,7 @@
 <template>
     <div>
         <!--轮播图-->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in lunboList" :key="lunboList.src">
-                <img :src="item.src" alt="">
-            </mt-swipe-item>
-        </mt-swipe>
+        <swiper :lunboList="lunboList"></swiper>
         <!--六个项目格子-->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newslist">
@@ -37,6 +33,7 @@
 </template>
 
 <script>
+    import swiper from '../sub/swiper.vue'
     export default {
         data() {
             return {
@@ -57,20 +54,14 @@
                     this.lunboList = result.body;
                 })
             }
+        },
+        components: {
+            swiper
         }
     }
 </script>
 
 <style lang="less" scoped>
-    .mint-swipe {
-        height: 200px;
-
-        .mint-swipe-item {
-            img {
-                width: 100%;
-            }
-        }
-    }
 
     .mui-grid-view.mui-grid-9 {
         background-color: #fff;

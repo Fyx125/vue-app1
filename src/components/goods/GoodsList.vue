@@ -1,47 +1,21 @@
 <template>
     <div class="good-list">
-        <div class="goods-item">
-            <img :src="imgs[0]" alt="">
-            <h2 class="title">小米(Mi)小米Note 16G双网通版</h2>
+        <!--//也可以通过绑定事件跳转页面  &#45;&#45;this.$router.push('/home/goodsinfo/'+id)-->
+        <router-link class="goods-item" v-for="item in goodslist" :key="item.id" :to="'/home/goodsinfo/'+item.id" tag="div">
+            <img :src="item.src" alt="">
+            <h2 class="title">{{item.title}}</h2>
             <div class="info">
                 <p class="price">
-                    <span class="now">￥ 999</span>
-                    <span class="old">￥ 1099</span>
+                    <span class="now">￥ {{item.nowprice}}</span>
+                    <span class="old">￥ {{item.oldprice}}</span>
                 </p>
                 <p class="sell">
                     <span>热卖中</span>
-                    <span>剩60件</span>
+                    <span>剩{{item.num}}件</span>
                 </p>
             </div>
-        </div>
-        <div class="goods-item">
-            <img :src="imgs[0]" alt="">
-            <h2 class="title">小米(Mi)小米Note 16G双网通版</h2>
-            <div class="info">
-                <p class="price">
-                    <span class="now">￥ 999</span>
-                    <span class="old">￥ 1099</span>
-                </p>
-                <p class="sell">
-                    <span>热卖中</span>
-                    <span>剩60件</span>
-                </p>
-            </div>
-        </div>
-        <div class="goods-item">
-            <img :src="imgs[0]" alt="">
-            <h2 class="title">小米(Mi)小米Note 16G双网通版</h2>
-            <div class="info">
-                <p class="price">
-                    <span class="now">￥ 999</span>
-                    <span class="old">￥ 1099</span>
-                </p>
-                <p class="sell">
-                    <span>热卖中</span>
-                    <span>剩60件</span>
-                </p>
-            </div>
-        </div>
+        </router-link>
+        <mt-button type="danger" size="large" @click="getMore">加载更多</mt-button>
     </div>
 </template>
 
@@ -50,7 +24,22 @@
         name: "GoodsList",
         data() {
             return {
-                imgs:['../../images/goods/phone.jpg']
+                pageindex: 1,
+                goodslist: []
+            }
+        },
+        created() {
+          this.getGoodsList();
+        },
+        methods: {
+            getGoodsList() {
+                this.$http.get('getgoods/' + this.pageindex).then(result => {
+                    this.goodslist = this.goodslist.concat(result.body);
+                })
+            },
+            getMore() {
+                this.pageindex++;
+                this.getGoodsList();
             }
         }
     }
@@ -62,6 +51,7 @@
         flex-wrap: wrap;
         padding: 8px;
         justify-content: space-between;
+
         .goods-item {
             width: 49%;
             border: 1px solid #ccc;
@@ -72,30 +62,37 @@
             flex-direction: column;
             justify-content: space-between;
             min-height: 293px;
+
             img {
                 width: 100%;
             }
+
             .title {
                 font-size: 14px;
             }
+
             .info {
                 background-color: #eee;
+
                 p {
                     margin: 0;
                     padding: 5px;
                 }
+
                 .price {
                     .now {
                         color: #f00;
                         font-weight: 700;
                         font-size: 16px;
                     }
+
                     .old {
                         text-decoration: line-through;
                         font-size: 12px;
                         margin-left: 10px;
                     }
                 }
+
                 .sell {
                     display: flex;
                     justify-content: space-between;
