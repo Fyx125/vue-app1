@@ -87,12 +87,13 @@
             },
             addToShopCar() {
                 this.ballFrag = !this.ballFrag;
-                //{id:商品的id,count:商品的数量,price:商品的价格,selected:false商品在购物车中是否被选中}
+                //{id:商品的id,count:商品的数量,price:商品的价格,selected:false商品在购物车中是否被选中,src:商品图片}
                 var goodsinfo = {
                     id:this.id,
                     count:this.selectCount,
                     price:this.goodsinfo.nowprice,
-                    selected:true
+                    selected:true,
+                    src:this.goodsinfo.src
                 };
                 this.$store.commit('addToCar',goodsinfo);
             },
